@@ -1,3 +1,3 @@
-# Programmieraufgabe - Repository Vorlage
-Im Verzeichnis src/ sind alle Quelltextdateien und Pakete abzulegen.
-Elemente außerhalb des src/ Verzeichnisses werden nicht kompiliert und folglich nicht berücksichtigt.
+# Ich bin schon fertig mit Proggen
+
+Die Aufgabe lässt sich runter reduzieren auf mehrfache Breitensuche eines Graphen bis jeder Knoten besucht wurde. 
