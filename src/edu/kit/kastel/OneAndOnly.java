@@ -4,6 +4,7 @@ import java.util.List;
 
 /**
  * The one and only class. Solves the problem entirely.
+ * Please see the readme.md for a brief explanation of how and why this works.
  *
  * @author uwwfh
  */
