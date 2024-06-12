@@ -1,4 +1,4 @@
-# Ich bin schon fertig mit Proggen (2,3)
+# Ich habe Proggen bereits bestanden (WS23/24)
 
 ### Notiz für Tutoren: Diese Aufgaben mache ich nur zum Zeitvertreib. Bewerten oder großartig analysieren braucht ihr nicht (mehr als notwendig).
 
