@@ -1,5 +1,6 @@
 package edu.kit.kastel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,8 +15,6 @@ public final class OneAndOnly {
     private static final int FILEPATH_INDEX = 0;
     private static final int TOTAL_SUM_INDEX = 0;
 
-    private static boolean[] hasEntryPoints;
-
     private OneAndOnly() { }
 
     /**
@@ -23,28 +22,25 @@ public final class OneAndOnly {
      * @param args Command line arguments.
      */
     public static void main(String[] args) {
-        List<String> filecontents = FileHelper.readAllLines(args[FILEPATH_INDEX]);
-        int planetCount = Integer.parseInt(filecontents.get(TOTAL_SUM_INDEX));
-        hasEntryPoints = new boolean[planetCount];
+        List<String> fileContents = FileHelper.readAllLines(args[FILEPATH_INDEX]);
+        int planetCount = Integer.parseInt(fileContents.get(TOTAL_SUM_INDEX));
+        List<Integer> startPoints = new ArrayList<>();
+        for (int i = 0; i < planetCount; ++i) {
+            startPoints.add(i);
+        }
 
         for (int i = 1; i <= planetCount; ++i) {
-            String[] numbers = filecontents.get(i).split(NUMBER_SEPARATOR);
+            String[] numbers = fileContents.get(i).split(NUMBER_SEPARATOR);
             int routeCount = Integer.parseInt(numbers[TOTAL_SUM_INDEX]);
             for (int j = 0; j < routeCount; ++j) {
                 int targetPlanet = Integer.parseInt(numbers[j + 1]);
-                hasEntryPoints[targetPlanet] = true;
+                // This cast to object is necessary because otherwise we're calling
+                // list.remove(index), which is a) not what we want and b) returns a T, not a boolean.
+                startPoints.remove((Object) targetPlanet);
             }
         }
-        System.out.println(getMinDroidCount());
-    }
 
-    private static int getMinDroidCount() {
-        int droids = 0;
-        for (boolean hasEntries : hasEntryPoints) {
-            if (!hasEntries) {
-                ++droids;
-            }
-        }
-        return droids;
+        // Droid count = number of points no planet links to = number of remaining start points
+        System.out.println(startPoints.size());
     }
 }
